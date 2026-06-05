@@ -1,0 +1,7 @@
+node_modules/
+*.csv
+dist/
+.next/
+.astro/
+__pycache__/
+*.joblib

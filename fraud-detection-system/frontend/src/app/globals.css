@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased selection:bg-primary/30 selection:text-white;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .command-panel {
+    @apply relative overflow-hidden bg-card backdrop-blur-2xl border border-border rounded-2xl transition-all duration-300;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  }
+
+  .command-panel::before {
+    content: "";
+    @apply absolute inset-0 bg-gradient-to-br from-white/5 to-transparent pointer-events-none;
+  }
+
+  .neon-text-primary {
+    @apply text-primary;
+    text-shadow: 0 0 10px rgba(0, 229, 255, 0.5), 0 0 20px rgba(0, 229, 255, 0.2);
+  }
+
+  .neon-text-destructive {
+    @apply text-destructive;
+    text-shadow: 0 0 10px rgba(255, 0, 61, 0.5), 0 0 20px rgba(255, 0, 61, 0.2);
+  }
+
+  .neon-text-accent {
+    @apply text-accent;
+    text-shadow: 0 0 10px rgba(0, 255, 163, 0.5), 0 0 20px rgba(0, 255, 163, 0.2);
+  }
+
+  .scanline {
+    @apply absolute inset-0 pointer-events-none z-50;
+    background: linear-gradient(
+      to bottom,
+      transparent 50%,
+      rgba(0, 229, 255, 0.05) 50.5%,
+      transparent 51%
+    );
+    background-size: 100% 4px;
+    opacity: 0.1;
+  }
+}
+
+.particles-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: radial-gradient(circle at 50% 50%, #0a0f18 0%, #05070a 100%);
+  background-image: 
+    radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 40px),
+    radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 30px),
+    radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 40px);
+  background-size: 550px 550px, 350px 350px, 250px 250px;
+  background-position: 0 0, 40px 60px, 130px 270px;
+  animation: move-background 100s linear infinite;
+  opacity: 0.3;
+}
+
+@keyframes move-background {
+  from { background-position: 0 0, 40px 60px, 130px 270px; }
+  to { background-position: 550px 550px, 390px 410px, 380px 820px; }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-background/50;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-primary/20 rounded-full hover:bg-primary/40 transition-colors;
+}
+
+/* Recharts Customization */
+.recharts-cartesian-grid-horizontal line,
+.recharts-cartesian-grid-vertical line {
+  stroke: rgba(255, 255, 255, 0.05);
+}
+
+.recharts-tooltip-wrapper {
+  @apply outline-none !important;
+}
+
+.recharts-default-tooltip {
+  @apply bg-background/90 backdrop-blur-xl border border-white/10 rounded-xl shadow-2xl !important;
+}

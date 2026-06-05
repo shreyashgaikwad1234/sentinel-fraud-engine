@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Sidebar from "../components/Sidebar.astro";
+import { CommandCenterApp } from "../components/CommandCenterApp";
+---
+
+<Layout title="Sentinel Fraud Engine | Neural Threat Intelligence">
+	<Sidebar />
+	<CommandCenterApp client:load>
+		<div class="pl-20 pt-40 flex flex-col items-center justify-center text-primary/20 animate-pulse">
+			<span class="text-4xl font-black uppercase tracking-[1em]">Establishing Neural Connection...</span>
+		</div>
+	</CommandCenterApp>
+</Layout>

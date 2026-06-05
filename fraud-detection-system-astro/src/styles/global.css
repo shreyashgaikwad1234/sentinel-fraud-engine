@@ -1,0 +1,107 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-foreground: var(--text-primary);
+  --color-muted: var(--text-secondary);
+  --color-border: var(--border);
+
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+@layer base {
+  :root {
+    --background: #F8FAFC;
+    --surface: #FFFFFF;
+    --card: #FFFFFF;
+    --primary: #0F172A;
+    --secondary: #6366F1;
+    --success: #10B981;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+    --text-primary: #0F172A;
+    --text-secondary: #64748B;
+    --border: #E2E8F0;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: #050816;
+    --surface: #0B1220;
+    --card: #101826;
+    --primary: #00E5FF;
+    --secondary: #8B5CF6;
+    --success: #00C853;
+    --warning: #FFB300;
+    --danger: #FF1744;
+    --text-primary: #FFFFFF;
+    --text-secondary: #94A3B8;
+    --border: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased font-sans;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .enterprise-card {
+    @apply bg-card border border-border shadow-sm rounded-xl overflow-hidden transition-all duration-200;
+  }
+
+  .enterprise-card:hover {
+    @apply shadow-md border-primary/20;
+  }
+
+  .text-title {
+    @apply text-foreground font-black tracking-tight uppercase;
+  }
+
+  .text-data {
+    @apply font-mono tabular-nums;
+  }
+  
+  .grid-layout {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 lg:gap-8;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 5px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  @apply bg-muted/20 rounded-full hover:bg-muted/40 transition-colors;
+}
+
+/* Tooltip Custom Overrides */
+.recharts-default-tooltip {
+  background-color: var(--card) !important;
+  border-color: var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 40px 100px rgba(0,0,0,0.4) !important;
+}
+
+@keyframes flow {
+  from { stroke-dashoffset: 20; }
+  to { stroke-dashoffset: 0; }
+}
+
+.animate-flow {
+  stroke-dasharray: 10, 10;
+  animation: flow 1s linear infinite;
+}
